@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply font-heading font-bold text-3xl md:text-4xl text-ocean-800 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-sky-600 font-semibold text-sm uppercase tracking-widest mb-3;
+  }
+
+  .section-desc {
+    @apply text-slate-600 text-base leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply bg-sky-500 hover:bg-sky-600 text-white font-semibold px-7 py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply border-2 border-sky-500 text-sky-600 hover:bg-sky-500 hover:text-white font-semibold px-7 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .tag {
+    @apply inline-block bg-sky-100 text-sky-700 text-xs font-semibold px-3 py-1 rounded-full;
+  }
+
+  .product-card {
+    @apply bg-white rounded-xl border border-sky-100 p-5 hover:border-sky-300 hover:shadow-card transition-all duration-300 hover:-translate-y-0.5;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #0ea5e9, #0254a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-water {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0d86e8 40%, #0254a3 100%);
+  }
+
+  .wave-divider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scrolled-nav {
+    @apply shadow-lg bg-white/95 backdrop-blur-sm;
+  }
+}
+
+/* Wave animation */
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* Fade in on scroll */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #0254a3);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+  border-radius: 4px;
+}
+
+/* Product grid hover effects */
+.product-icon-wrap {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.product-card:hover .product-icon-wrap {
+  transform: scale(1.1) rotate(-3deg);
+  background: linear-gradient(135deg, #0ea5e9, #0254a3);
+  color: white;
+}
+
+/* Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-content.open {
+  max-height: 2000px;
+}
